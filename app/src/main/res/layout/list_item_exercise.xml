@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="exercise"
+            type="com.koenig.gymtracker.models.exerciseModel.ExerciseModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:elevation="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/colorPrimary"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tx_exercise_name"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_weight="2.5"
+                android:text="@{exercise.exerciseName}"
+                android:textColor="@color/white"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="20sp"
+                tools:text="Exercise"
+                />
+
+
+            <TextView
+                android:id="@+id/tx_kg"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_weight="2.5"
+                android:text="@{Float.toString(exercise.weight)}"
+                android:textColor="@color/white"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="20sp"
+                tools:text="100 kg"
+                />
+
+            <TextView
+                android:id="@+id/tx_sets"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_weight="2.5"
+                android:text="@{Integer.toString(exercise.sets)}"
+                android:textColor="@color/white"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="20sp"
+                tools:text="3 sets"
+                />
+
+            <TextView
+                android:id="@+id/tx_reps"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_weight="2.5"
+                android:text="@{Integer.toString(exercise.reps)}"
+                android:textColor="@color/white"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="20sp"
+                tools:text="8 reps"
+                />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/workoutManagerFragment">
+    <fragment
+        android:id="@+id/workoutDiaryFragment"
+        android:name="com.koenig.gymtracker.ui.workoutDiary.WorkoutDiaryFragment"
+        android:label="fragment_workout_diary"
+        tools:layout="@layout/fragment_workout_diary" >
+        <action
+            android:id="@+id/action_workoutDiaryFragment_to_diaryDisplay"
+            app:destination="@id/diaryDisplay" />
+    </fragment>
+    <fragment
+        android:id="@+id/workoutManagerFragment"
+        android:name="com.koenig.gymtracker.ui.workoutManager.WorkoutManagerFragment"
+        android:label="My Workouts"
+        tools:layout="@layout/fragment_workout_manager" >
+        <action
+            android:id="@+id/action_workoutManagerFragment_to_workoutDiaryFragment"
+            app:destination="@id/workoutDiaryFragment" />
+        <action
+            android:id="@+id/action_workoutManagerFragment_to_workoutDisplayFragment"
+            app:destination="@id/workoutDisplayFragment" />
+        <action
+            android:id="@+id/action_workoutManagerFragment_to_workoutDialogFragment"
+            app:destination="@id/workoutDialogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workoutDisplayFragment"
+        android:name="com.koenig.gymtracker.ui.workoutDisplay.WorkoutDisplayFragment"
+        android:label="fragment_workout_display"
+        tools:layout="@layout/fragment_workout_display">
+    <argument
+        android:name="workoutId"
+        app:argType="integer" />
+        <action
+            android:id="@+id/action_workoutDisplayFragment_to_exerciseDialogFragment"
+            app:destination="@id/exerciseDialogFragment"
+            app:popUpTo="@+id/exerciseDialogFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/workoutDialogFragment"
+        android:name="com.koenig.gymtracker.ui.workoutDialog.WorkoutDialogFragment"
+        android:label="fragment_workout_dialog"
+        tools:layout="@layout/fragment_workout_dialog" >
+        <argument
+            android:name="modes"
+            app:argType="com.koenig.gymtracker.enums.Modes" />
+        <argument
+            android:name="position"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="workoutModel"
+            app:argType="com.koenig.gymtracker.models.workoutModel.WorkoutModel"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_workoutDialogFragment_to_workoutManagerFragment"
+            app:destination="@id/workoutManagerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseDialogFragment"
+        android:name="com.koenig.gymtracker.ui.exerciseDialog.ExerciseDialogFragment"
+        android:label="fragment_exercise_dialog"
+        tools:layout="@layout/fragment_exercise_dialog">
+    <argument
+        android:name="workoutId"
+        app:argType="integer" />
+
+    <argument
+        android:name="modes"
+        app:argType="com.koenig.gymtracker.enums.Modes" />
+
+    <argument
+        android:name="exercise"
+        app:argType="com.koenig.gymtracker.models.exerciseModel.ExerciseModel"
+        app:nullable="true"
+        android:defaultValue="@null" />
+
+    <argument
+        android:name="exercisePosition"
+        app:argType="integer"
+         />
+        <action
+            android:id="@+id/action_exerciseDialogFragment_to_workoutDisplayFragment"
+            app:destination="@id/workoutDisplayFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/diaryDisplay"
+        android:name="com.koenig.gymtracker.ui.workoutDiaryDisplay.DiaryDisplay"
+        android:label="fragment_diary_display"
+        tools:layout="@layout/fragment_diary_display" >
+        <argument
+            android:name="diaryWorkoutId"
+            app:argType="integer" />
+    </fragment>
+
+</navigation>
